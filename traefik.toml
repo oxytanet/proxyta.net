@@ -5,9 +5,9 @@ defaultEntryPoints = ["http", "https"]
   address = ":80"
     [entryPoints.http.redirect]
     entryPoint = "https"
-  [entryPoint.https]
+  [entryPoints.https]
   address = ":443"
-  [entryPoint.https.tls]
+  [entryPoints.https.tls]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
