@@ -8,6 +8,9 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.https]
   address = ":443"
   [entryPoints.https.tls]
+  [entryPoints.https.redirect]
+  regex = "^https://www.(.*)"
+  replacement = "https://$1"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
