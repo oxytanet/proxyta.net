@@ -14,5 +14,5 @@ expose, put:
 ```yaml
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host: ${SERVICE}.${DOMAIN_NAME:-local}"
+      - "traefik.frontend.rule=Host: ${SERVICE}.${DOMAIN_NAME:-local}, www.${SERVICE}.${DOMAIN_NAME:-local}"
 ```
