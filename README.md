@@ -1,10 +1,13 @@
-# Traefik Prod
+# Traefik SSL
+
+Put your certificate in:
+
+- `/etc/ssl/certs/traefik-ca.crt`
+- `/etc/ssl/certs/traefik.crt`
+- `/etc/ssl/private/traefik.key`
 
 ```
 docker network create traefik
-export ACME_EMAIL=your@email.address  # You can put this in your .bashrc ;)
-touch acme.json
-chmod 600 acme.json
 docker-compose up -d
 ```
 

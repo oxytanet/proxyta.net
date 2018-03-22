@@ -12,8 +12,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/traefik.toml
-      - ./acme.json:/acme.json
-    command: --acme.email=${ACME_EMAIL}
+      - /etc/ssl/certs/traefik-ca.crt:/traefik-ca.crt
+      - /etc/ssl/certs/traefik.crt:/traefik.crt
+      - /etc/ssl/private/traefik.key:/traefik.key
 
 networks:
   traefik:

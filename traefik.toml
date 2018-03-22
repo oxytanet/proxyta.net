@@ -18,9 +18,8 @@ domain = "docker.localhost"
 watch = true
 exposedbydefault = false
 
-[acme]
-storage = "acme.json"
-entryPoint = "https"
-OnHostRule = true
-[acme.httpChallenge]
-entryPoint = "http"
+[docker.tls]
+ca = "/traefik-ca.crt"
+cert = "/traefik.crt"
+key = "/traefik.key"
+insecureskipverify = false
