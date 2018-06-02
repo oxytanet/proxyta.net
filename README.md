@@ -43,4 +43,5 @@ For this, in dev, you can just add it to your `/etc/hosts`
 
 ## Go to Dev from Prod and vice versa
 
-Just launch `docker-compose down` in the old folder and follow the README in the new
+Just launch `docker-compose down` in the old folder and follow the README in the new. You don't even need to touch your
+other services.
