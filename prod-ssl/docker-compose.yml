@@ -2,7 +2,7 @@ version: '2'
 
 services:
   traefik:
-    image: traefik:1.5-alpine
+    image: traefik:alpine
     restart: unless-stopped
     ports:
       - 80:80
@@ -11,7 +11,7 @@ services:
       - traefik
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik.toml:/traefik.toml
+      - ./traefik.toml:/etc/traefik/traefik.toml
       - /etc/ssl/certs/traefik-ca.crt:/traefik-ca.crt
       - /etc/ssl/certs/traefik.crt:/traefik.crt
       - /etc/ssl/private/traefik.key:/traefik.key

@@ -1,16 +1,7 @@
-# Traefik Dev
+# proxyta.net dev setup
 
 ```
-docker network create traefik
 docker-compose up -d
 ```
 
-And then, for all your docker-compose projets, on the services you want to
-expose, put:
-
-```yaml
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.rule: "Host: ${SERVICE}.${DOMAIN_NAME:-local}"
-      traefik.docker.network: "traefik"
-```
+Yep, that's it, you're done.
