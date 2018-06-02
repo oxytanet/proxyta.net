@@ -29,7 +29,7 @@ services:
       - default
 ```
 
-You also need to declare the docker network `proxytanet` as external in the same file:
+You also need to declare the `proxytanet` docker network as external in the same file:
 
 ```
 networks:
