@@ -9,7 +9,7 @@ A simple reverse proxy setup, for both dev & prod, with [docker-compose](https:/
 2. Run `docker-compose up -d` in the folder corresponding to your environment:
     - [dev](dev/)
     - [prod with letsencrypt](prod-le/) (look at the README first)
-    - [prod with you certificates](prod-ssl/) (look at the README first)
+    - [prod with your certificates](prod-ssl/) (look at the README first)
 
 ## Use in your other services
 
