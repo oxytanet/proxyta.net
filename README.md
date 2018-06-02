@@ -13,7 +13,8 @@ A simple reverse proxy setup, for both dev & prod, with [docker-compose](https:/
 
 ## Use in your other services
 
-In the projects using docker-compose you want to reverse-proxy, add those labels to the service that have to be exposed:
+In the projects using docker-compose you want to reverse-proxy, add those labels and the network to the service(s) that
+have to be exposed:
 
 ```
 services:
@@ -23,6 +24,9 @@ services:
       traefik.enable: "true"
       traefik.frontend.rule: "Host: your_app.${DOMAIN_NAME:-local}, www.your_app.${DOMAIN_NAME:-local}"
       traefik.docker.network: "proxytanet"
+    networks:
+      - proxytanet
+      - default
 ```
 
 You also need to declare the docker network `proxytanet` as external in the same file:
