@@ -8,8 +8,8 @@ A simple reverse proxy setup, for both dev & prod, with [docker-compose](https:/
 1. Create a docker network: `docker network create proxytanet`
 2. Run `docker-compose up -d` in the folder corresponding to your environment:
     - [dev](dev/)
-    - [prod with letsencrypt](prod-le/)
-    - [prod with you certificates](prod-ssl/)
+    - [prod with letsencrypt](prod-le/) (look at the README first)
+    - [prod with you certificates](prod-ssl/) (look at the README first)
 
 ## Use in your other services
 
@@ -21,7 +21,7 @@ services:
     [...]
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host: service.${DOMAIN_NAME:-local}, www.service.${DOMAIN_NAME:-local}"
+      traefik.frontend.rule: "Host: your_app.${DOMAIN_NAME:-local}, www.your_app.${DOMAIN_NAME:-local}"
       traefik.docker.network: "proxytanet"
 ```
 
@@ -36,3 +36,7 @@ networks:
 :warning: Don't forget to setup the DNS for `service.${DOMAIN_NAME:-local}` and its `www.` version :warning:
 
 For this, in dev, you can just add it to your `/etc/hosts`
+
+## Go to Dev from Prod and vice versa
+
+Just launch `docker-compose down` in the old folder and follow the README in the new
