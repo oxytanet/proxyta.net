@@ -12,9 +12,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
-      - /etc/ssl/certs/traefik-ca.crt:/traefik-ca.crt
-      - /etc/ssl/certs/traefik.crt:/traefik.crt
-      - /etc/ssl/private/traefik.key:/traefik.key
+      - /etc/ssl/certs/proxytanet-ca.crt:/proxytanet-ca.crt
+      - /etc/ssl/certs/proxytanet.crt:/proxytanet.crt
+      - /etc/ssl/private/proxytanet.key:/proxytanet.key
 
 networks:
   traefik:

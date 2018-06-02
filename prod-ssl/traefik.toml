@@ -19,7 +19,7 @@ watch = true
 exposedbydefault = false
 
 [docker.tls]
-ca = "/traefik-ca.crt"
-cert = "/traefik.crt"
-key = "/traefik.key"
+ca = "/proxytanet-ca.crt"
+cert = "/proxytanet.crt"
+key = "/proxytanet.key"
 insecureskipverify = false
