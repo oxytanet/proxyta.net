@@ -3,6 +3,8 @@
 A simple reverse proxy setup, for both dev & prod, with [docker-compose](https://docs.docker.com/compose/) &
 [traefik](https://traefik.io/)
 
+You can read more here: [https://saurel.me/proxyta.net](https://saurel.me/proxyta.net)
+
 ## Launch
 
 1. Create a docker network: `docker network create proxytanet`
