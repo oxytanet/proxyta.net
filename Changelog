@@ -1,0 +1,7 @@
+# v2.0.0
+
+- Renamed `proxytanet` network to `web`, to comply with traefik's defaults since https://github.com/containous/traefik/pull/3471
+
+# v1.0.0
+
+- Initial Version

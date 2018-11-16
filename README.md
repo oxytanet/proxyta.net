@@ -7,7 +7,7 @@ You can read more here: [https://saurel.me/proxyta.net](https://saurel.me/proxyt
 
 ## Launch
 
-1. Create a docker network: `docker network create proxytanet`
+1. Create a docker network: `docker network create web`
 2. Run `docker-compose up -d` in the folder corresponding to your environment:
     - [dev](dev/)
     - [prod with letsencrypt](prod-le/) (look at the README first)
@@ -25,17 +25,16 @@ services:
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host: your_app.${DOMAIN_NAME:-local}, www.your_app.${DOMAIN_NAME:-local}"
-      traefik.docker.network: "proxytanet"
     networks:
-      - proxytanet
+      - web
       - default
 ```
 
-You also need to declare the `proxytanet` docker network as external in the same file:
+You also need to declare the `web` docker network as external in the same file:
 
 ```
 networks:
-  proxytanet:
+  web:
     external: true
 ```
 

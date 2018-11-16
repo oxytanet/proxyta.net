@@ -8,7 +8,7 @@ services:
       - 80:80
       - 443:443
     networks:
-      - proxytanet
+      - web
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
@@ -17,5 +17,5 @@ services:
       - /etc/ssl/private/proxytanet.key:/proxytanet.key
 
 networks:
-  proxytanet:
+  web:
     external: true
