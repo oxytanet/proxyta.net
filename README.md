@@ -24,7 +24,7 @@ services:
     [...]
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host: your_app.${DOMAIN_NAME:-local}, www.your_app.${DOMAIN_NAME:-local}"
+      traefik.frontend.rule: "Host: your_app.${DOMAIN_NAME:-localhost}, www.your_app.${DOMAIN_NAME:-localhost}"
     networks:
       - web
       - default
@@ -38,9 +38,7 @@ networks:
     external: true
 ```
 
-:warning: Don't forget to setup the DNS for `service.${DOMAIN_NAME:-local}` and its `www.` version :warning:
-
-For this, in dev, you can just add it to your `/etc/hosts`
+:warning: In production, don't forget to setup the DNS for `service.${DOMAIN_NAME}` and its `www.` version :warning:
 
 ## Go to Dev from Prod and vice versa
 

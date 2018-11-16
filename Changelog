@@ -1,6 +1,7 @@
 # v2.0.0
 
 - Renamed `proxytanet` network to `web`, to comply with traefik's defaults since https://github.com/containous/traefik/pull/3471
+- Renamed default `DOMAIN_NAME` from `local` to `localhost`, to avoid `/etc/hosts` modifications
 
 # v1.0.0
 
