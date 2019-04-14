@@ -13,7 +13,13 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
       - ./acme.json:/acme.json
+      - ./htdigest:/htdigest
     command: --acme.email=${ACME_EMAIL}
+    labels:
+      traefik.enable: "true"
+      traefik.port: "8080"
+      traefik.frontend.auth.digest.usersFile: "/htdigest"
+      traefik.frontend.rule: "Host: ${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}, www.${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}"
 
 networks:
   web:

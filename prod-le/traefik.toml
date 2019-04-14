@@ -33,3 +33,5 @@ entryPoint = "https"
 OnHostRule = true
 [acme.httpChallenge]
 entryPoint = "http"
+
+[api]
