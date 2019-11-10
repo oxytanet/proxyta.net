@@ -2,7 +2,7 @@ version: '3'
 
 services:
   traefik:
-    image: traefik:alpine
+    image: traefik:1.7-alpine
     restart: unless-stopped
     env_file:
       - .env
