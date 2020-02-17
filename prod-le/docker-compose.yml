@@ -1,4 +1,4 @@
-version: '3'
+version: '2.3'
 
 services:
   traefik:
@@ -22,6 +22,14 @@ services:
       traefik.port: "8080"
       traefik.frontend.auth.digest.usersFile: "/htdigest"
       traefik.frontend.rule: "Host: ${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}, www.${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}"
+
+  ipv6nat:
+    image: robbertkl/ipv6nat
+    privileged: true
+    network_mode: "host"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /lib/modules:/lib/modules:ro
 
 networks:
   web:

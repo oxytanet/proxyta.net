@@ -7,7 +7,7 @@ You can read more here: [https://saurel.me/proxyta.net](https://saurel.me/proxyt
 
 ## Launch
 
-1. Create a docker network: `docker network create web`
+1. Create a docker network: `docker network create --ipv6 --subnet=fd00:dead:beef::/48 web`
 2. Run `docker-compose up -d` in the folder corresponding to your environment:
     - [dev](dev/)
     - [prod with letsencrypt](prod-le/) (look at the README first)

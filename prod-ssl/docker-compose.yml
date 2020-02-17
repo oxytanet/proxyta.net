@@ -16,6 +16,14 @@ services:
       - /etc/ssl/certs/proxytanet.crt:/proxytanet.crt
       - /etc/ssl/private/proxytanet.key:/proxytanet.key
 
+  ipv6nat:
+    image: robbertkl/ipv6nat
+    privileged: true
+    network_mode: "host"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /lib/modules:/lib/modules:ro
+
 networks:
   web:
     external: true
