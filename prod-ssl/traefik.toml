@@ -17,6 +17,9 @@ defaultEntryPoints = ["http", "https"]
     "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305",
     "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"
   ]
+    [[entryPoints.https.tls.certificates]]
+    certFile = "/proxytanet-ca.crt"
+    keyFile = "/proxytanet.key"
   [entryPoints.https.redirect]
   regex = "^https://www.(.*)"
   replacement = "https://$1"
@@ -27,9 +30,3 @@ domain = "docker.localhost"
 watch = true
 exposedbydefault = false
 network = "web"
-
-[docker.tls]
-ca = "/proxytanet-ca.crt"
-cert = "/proxytanet.crt"
-key = "/proxytanet.key"
-insecureskipverify = false
