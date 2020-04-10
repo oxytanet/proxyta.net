@@ -24,7 +24,8 @@ services:
     [...]
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host: your_app.${DOMAIN_NAME:-localhost}, www.your_app.${DOMAIN_NAME:-localhost}"
+      traefik.http.routers.your_app.rule: "Host(`your_app.${CHATONS_DOMAIN:-localhost}`) || Host(`www.your_app.${CHATONS_DOMAIN:-localhost}`)"
+      traefik.http.routers.your_app.entrypoints: "websecure"
     networks:
       - web
       - default
