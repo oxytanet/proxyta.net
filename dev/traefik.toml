@@ -9,3 +9,4 @@
     network = "web"
 
 [api]
+  insecure = true
