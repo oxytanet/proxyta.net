@@ -1,3 +1,6 @@
+[global]
+  sendAnonymousUsage = false
+
 [entryPoints]
   [entryPoints.web]
     address = ":80"
@@ -20,3 +23,5 @@
     endpoint = "unix:///var/run/docker.sock"
     exposedbydefault = false
     network = "web"
+
+[api]
