@@ -43,5 +43,5 @@ networks:
 
 ## Go to Dev from Prod and vice versa
 
-1. switch your entrypoint to web or websecure
-2. launch `docker-compose down` in the old folder and follow the README in the new.
+Just launch `docker-compose down` in the old folder and follow the README in the new. You don't even need to touch your
+other services.
