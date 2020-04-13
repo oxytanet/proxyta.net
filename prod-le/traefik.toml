@@ -5,18 +5,18 @@
   sendAnonymousUsage = false
 
 [entryPoints]
-  [entryPoints.web]
+  [entryPoints.webinsecure]
     address = ":80"
+    [entryPoints.webinsecure.http]
+      middlewares = ["security@file"]
+      [entryPoints.webinsecure.http.redirections.entryPoint]
+        to = "web"
+        scheme = "https"
+  [entryPoints.web]
+    address = ":443"
     [entryPoints.web.http]
       middlewares = ["security@file"]
-      [entryPoints.web.http.redirections.entryPoint]
-        to = "websecure"
-        scheme = "https"
-  [entryPoints.websecure]
-    address = ":443"
-    [entryPoints.websecure.http]
-      middlewares = ["security@file"]
-      [entryPoints.websecure.http.tls]
+      [entryPoints.web.http.tls]
         options = "mytlsoption@file"
         certresolver = "le"
 
@@ -33,4 +33,4 @@
 [certificatesResolvers.le.acme]
   storage = "/etc/traefik/acme.json"
   [certificatesResolvers.le.acme.httpchallenge]
-    entrypoint = "web"
+    entrypoint = "webinsecure"

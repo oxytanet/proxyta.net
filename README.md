@@ -24,8 +24,7 @@ services:
     [...]
     labels:
       traefik.enable: "true"
-      traefik.http.routers.your_app.rule: "Host(`your_app.${CHATONS_DOMAIN:-localhost}`) || Host(`www.your_app.${CHATONS_DOMAIN:-localhost}`)"
-      traefik.http.routers.your_app.entrypoints: "websecure"
+      traefik.http.routers.your_app.rule: "Host(`your_app.${CHATONS_DOMAIN:-localhost}`)"
     networks:
       - web
       - default
@@ -39,7 +38,7 @@ networks:
     external: true
 ```
 
-:warning: In production, don't forget to setup the DNS for `service.${DOMAIN_NAME}` and its `www.` version :warning:
+:warning: In production, don't forget to setup the DNS for `service.${DOMAIN_NAME}` :warning:
 
 ## Go to Dev from Prod and vice versa
 

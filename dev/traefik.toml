@@ -1,5 +1,5 @@
 [entryPoints]
-  [entryPoints.http]
+  [entryPoints.web]
   address = ":80"
 
 [providers]
@@ -9,4 +9,3 @@
     network = "web"
 
 [api]
-  insecure = true

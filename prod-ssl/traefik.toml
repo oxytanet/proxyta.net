@@ -1,16 +1,19 @@
+[global]
+  sendAnonymousUsage = false
+
 [entryPoints]
-  [entryPoints.web]
+  [entryPoints.webinsecure]
     address = ":80"
+    [entryPoints.webinsecure.http]
+      middlewares = ["security@file"]
+      [entryPoints.webinsecure.http.redirections.entryPoint]
+        to = "web"
+        scheme = "https"
+  [entryPoints.web]
+    address = ":443"
     [entryPoints.web.http]
       middlewares = ["security@file"]
-      [entryPoints.web.http.redirections.entryPoint]
-        to = "websecure"
-        scheme = "https"
-  [entryPoints.websecure]
-    address = ":443"
-    [entryPoints.websecure.http]
-      middlewares = ["security@file"]
-      [entryPoints.websecure.http.tls]
+      [entryPoints.web.http.tls]
         options = "mytlsoption@file"
 
 [providers]
@@ -20,3 +23,5 @@
     endpoint = "unix:///var/run/docker.sock"
     exposedbydefault = false
     network = "web"
+
+[api]
