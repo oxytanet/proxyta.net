@@ -21,7 +21,7 @@ services:
       - "--certificatesresolvers.le.acme.email=${ACME_EMAIL}"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}`) || Host(`www.${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}`)"
+      - "traefik.http.routers.traefik.rule=Host(`${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}`)"
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.middlewares.traefik-auth.digestauth.usersfile=/htdigest"
