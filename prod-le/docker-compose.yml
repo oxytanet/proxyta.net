@@ -23,7 +23,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.rule=Host(`${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}`)"
       - "traefik.http.routers.traefik.service=api@internal"
-      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.entrypoints=web"
       - "traefik.http.middlewares.traefik-auth.digestauth.usersfile=/htdigest"
       - "traefik.http.routers.traefik.middlewares=traefik-auth@docker"
 
