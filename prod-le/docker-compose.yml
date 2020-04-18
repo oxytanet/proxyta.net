@@ -2,7 +2,7 @@ version: '3'
 
 services:
   traefik:
-    image: traefik:1.7-alpine
+    image: traefik:v2.2
     restart: unless-stopped
     env_file:
       - .env
@@ -14,14 +14,18 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
+      - ./dynamic.toml:/etc/traefik/dynamic.toml
       - ./acme.json:/acme.json
       - ./htdigest:/htdigest
-    command: --acme.email=${ACME_EMAIL}
+    command:
+      - "--certificatesresolvers.le.acme.email=${ACME_EMAIL}"
     labels:
-      traefik.enable: "true"
-      traefik.port: "8080"
-      traefik.frontend.auth.digest.usersFile: "/htdigest"
-      traefik.frontend.rule: "Host: ${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}, www.${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}"
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`${CHATONS_SERVICE:-traefik}.${CHATONS_DOMAIN:-localhost}`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.entrypoints=web"
+      - "traefik.http.middlewares.traefik-auth.digestauth.usersfile=/htdigest"
+      - "traefik.http.routers.traefik.middlewares=traefik-auth@docker"
 
   ipv6nat:
     image: robbertkl/ipv6nat

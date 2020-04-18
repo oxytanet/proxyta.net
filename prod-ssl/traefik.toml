@@ -1,32 +1,27 @@
-defaultEntryPoints = ["http", "https"]
+[global]
+  sendAnonymousUsage = false
 
 [entryPoints]
-  [entryPoints.http]
-  address = ":80"
-    [entryPoints.http.redirect]
-    entryPoint = "https"
-  [entryPoints.https]
-  address = ":443"
-  [entryPoints.https.tls]
-  minVersion = "VersionTLS12"
-  cipherSuites = [
-    "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
-    "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
-    "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
-    "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
-    "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305",
-    "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"
-  ]
-    [[entryPoints.https.tls.certificates]]
-    certFile = "/proxytanet-ca.crt"
-    keyFile = "/proxytanet.key"
-  [entryPoints.https.redirect]
-  regex = "^https://www.(.*)"
-  replacement = "https://$1"
+  [entryPoints.webinsecure]
+    address = ":80"
+    [entryPoints.webinsecure.http]
+      middlewares = ["security@file"]
+      [entryPoints.webinsecure.http.redirections.entryPoint]
+        to = "web"
+        scheme = "https"
+  [entryPoints.web]
+    address = ":443"
+    [entryPoints.web.http]
+      middlewares = ["security@file"]
+      [entryPoints.web.http.tls]
+        options = "mytlsoption@file"
 
-[docker]
-endpoint = "unix:///var/run/docker.sock"
-domain = "docker.localhost"
-watch = true
-exposedbydefault = false
-network = "web"
+[providers]
+  [providers.file]
+    filename = "/etc/traefik/dynamic.toml"
+  [providers.docker]
+    endpoint = "unix:///var/run/docker.sock"
+    exposedbydefault = false
+    network = "web"
+
+[api]
