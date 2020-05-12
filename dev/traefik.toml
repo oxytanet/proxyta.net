@@ -1,14 +1,12 @@
-defaultEntryPoints = ["http"]
-
 [entryPoints]
-  [entryPoints.http]
+  [entryPoints.web]
   address = ":80"
 
-[docker]
-endpoint = "unix:///var/run/docker.sock"
-domain = "docker.localhost"
-watch = true
-exposedbydefault = false
-network = "web"
+[providers]
+  [providers.docker]
+    endpoint = "unix:///var/run/docker.sock"
+    exposedbydefault = false
+    network = "web"
 
 [api]
+  insecure = true

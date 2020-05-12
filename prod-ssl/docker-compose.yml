@@ -2,7 +2,7 @@ version: '3'
 
 services:
   traefik:
-    image: traefik:1.7-alpine
+    image: traefik:v2.2
     restart: unless-stopped
     ports:
       - 80:80
@@ -12,6 +12,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
+      - ./dynamic:/etc/traefik/dynamic
       - /etc/ssl/certs/proxytanet-ca.crt:/proxytanet-ca.crt
       - /etc/ssl/certs/proxytanet.crt:/proxytanet.crt
       - /etc/ssl/private/proxytanet.key:/proxytanet.key
