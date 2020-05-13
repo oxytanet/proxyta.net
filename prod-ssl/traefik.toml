@@ -1,3 +1,6 @@
+# Static traefik conf
+# You need to restart traefik for these parameters
+
 [global]
   sendAnonymousUsage = false
 
@@ -25,3 +28,9 @@
     network = "web"
 
 [api]
+
+[tls.stores]
+  [tls.stores.default]
+    [tls.stores.default.defaultCertificate]
+      certFile = "/proxytanet-ca.crt"
+      keyFile  = "/proxytanet.key"

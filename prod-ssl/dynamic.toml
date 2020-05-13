@@ -1,8 +1,5 @@
-[tls.stores]
-  [tls.stores.default]
-    [tls.stores.default.defaultCertificate]
-      certFile = "/proxytanet-ca.crt"
-      keyFile  = "/proxytanet.key"
+# Dynamic traefik conf
+# You don't need to restart traefik for these parameters
 
 [http.middlewares]
   [http.middlewares.security.headers]
@@ -10,6 +7,10 @@
     sslRedirect = true
     browserXssFilter = true
     contentTypeNoSniff = true
+
+[[tls.certificates]]
+  certFile = "/proxytanet-ca.crt"
+  keyFile  = "/proxytanet.key"
 
 [tls.options.mytlsoption]
   minVersion = "VersionTLS12"
