@@ -15,7 +15,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
       - ./dynamic.toml:/etc/traefik/dynamic.toml
-      - ./acme.json:/acme.json
+      - ./acme.json:/etc/traefik/acme.json
       - ./htdigest:/htdigest
     command:
       - "--certificatesresolvers.le.acme.email=${ACME_EMAIL}"
