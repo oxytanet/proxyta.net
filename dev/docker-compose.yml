@@ -15,6 +15,7 @@ services:
 
   ipv6nat:
     image: robbertkl/ipv6nat
+    restart: unless-stopped
     privileged: true
     network_mode: "host"
     volumes:
