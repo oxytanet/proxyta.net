@@ -1,6 +1,5 @@
 [http.middlewares]
   [http.middlewares.security.headers]
-    frameDeny = true
     browserXssFilter = true
     contentTypeNoSniff = true
  
