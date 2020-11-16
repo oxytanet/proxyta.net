@@ -3,7 +3,6 @@
 
 [http.middlewares]
   [http.middlewares.security.headers]
-    frameDeny = true
     sslRedirect = true
     browserXssFilter = true
     contentTypeNoSniff = true

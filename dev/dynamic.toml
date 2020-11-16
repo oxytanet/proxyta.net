@@ -1,0 +1,5 @@
+[http.middlewares]
+  [http.middlewares.security.headers]
+    browserXssFilter = true
+    contentTypeNoSniff = true
+ 
