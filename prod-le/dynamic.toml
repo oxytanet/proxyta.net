@@ -7,7 +7,7 @@
     browserXssFilter = true
     contentTypeNoSniff = true
   [http.middlewares.nofloc.headers]
-    [http.middlewares.nofloc.headers.customRequestHeaders]
+    [http.middlewares.nofloc.headers.customResponseHeaders]
       Permissions-Policy = "interest-cohort=()"
 
 [tls.options.mytlsoption]
