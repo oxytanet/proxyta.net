@@ -2,4 +2,7 @@
   [http.middlewares.security.headers]
     browserXssFilter = true
     contentTypeNoSniff = true
+  [http.middlewares.nofloc.headers]
+    [http.middlewares.nofloc.headers.customRequestHeaders]
+      Permissions-Policy = "interest-cohort=()"
  

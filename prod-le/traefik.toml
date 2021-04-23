@@ -8,14 +8,14 @@
   [entryPoints.webinsecure]
     address = ":80"
     [entryPoints.webinsecure.http]
-      middlewares = ["security@file"]
+      middlewares = ["security@file", "nofloc@file"]
       [entryPoints.webinsecure.http.redirections.entryPoint]
         to = "web"
         scheme = "https"
   [entryPoints.web]
     address = ":443"
     [entryPoints.web.http]
-      middlewares = ["security@file"]
+      middlewares = ["security@file", "nofloc@file"]
       [entryPoints.web.http.tls]
         options = "mytlsoption@file"
         certresolver = "le"
