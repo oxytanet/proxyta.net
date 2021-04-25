@@ -2,7 +2,7 @@
   [entryPoints.web]
   address = ":80"
     [entryPoints.web.http]
-      middlewares = ["security@file"]
+      middlewares = ["security@file", "nofloc@file"]
 
 [providers]
   [providers.docker]
