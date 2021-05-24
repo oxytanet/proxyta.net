@@ -32,5 +32,4 @@
 
 [certificatesResolvers.le.acme]
   storage = "/etc/traefik/acme.json"
-  [certificatesResolvers.le.acme.httpchallenge]
-    entrypoint = "webinsecure"
+  [certificatesResolvers.le.acme.tlschallenge]
