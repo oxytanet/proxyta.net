@@ -3,7 +3,6 @@
 
 [http.middlewares]
   [http.middlewares.security.headers]
-    sslRedirect = true
     browserXssFilter = true
     contentTypeNoSniff = true
   [http.middlewares.nofloc.headers]
